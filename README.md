@@ -1,5 +1,7 @@
 # Python Scikit Application #
 
+[![Build Status](https://travis-ci.org/slahiri/vicious-machines.svg?branch=master)](https://travis-ci.org/slahiri/vicious-machines)
+
 Build the image using the following command
 
 ```bash

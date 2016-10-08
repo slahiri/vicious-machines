@@ -1,5 +1,7 @@
 flask
 flask-testing
+pytest
+pytest-cov
 numpy
 scipy
 scikit-learn

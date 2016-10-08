@@ -1,0 +1,20 @@
+sudo: required
+
+language: python
+
+services:
+  - docker
+
+cache:
+  directories:
+  - $HOME/docker
+
+before_install:
+  - docker build -t lahirs2/vicious-machines:latest .
+  - docker run -d --name vicious-app -p 5000:5000 lahirs2/vicious-machines:latest
+
+script:
+  - docker exec vicious-app python -m unittest discover
+
+after_script:
+  - docker rm -f vicious-app

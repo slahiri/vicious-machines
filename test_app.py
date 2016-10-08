@@ -7,9 +7,7 @@ class AppTest(LiveServerTestCase):
     def create_app(self):
         app = Flask(__name__)
         app.config['TESTING'] = True
-        # Default port is 5000
         app.config['LIVESERVER_PORT'] = 5000
-        # Default timeout is 5 seconds
         app.config['LIVESERVER_TIMEOUT'] = 10
         return app
 

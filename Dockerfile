@@ -1,5 +1,6 @@
-FROM python:2.7
+FROM lahirs2/vicious-machines:latest
 MAINTAINER Siddhartha Lahiri "siddhartha.lahiri@gmail.com"
+EXPOSE 5000
 COPY . /app
 WORKDIR /app
 RUN pip install -r requirements.txt

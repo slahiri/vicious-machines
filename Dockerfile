@@ -1,4 +1,4 @@
-FROM python:2.7
+FROM lahirs2/vicious-machines:latest
 MAINTAINER Siddhartha Lahiri "siddhartha.lahiri@gmail.com"
 COPY . /app
 WORKDIR /app

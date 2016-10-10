@@ -35,11 +35,14 @@ $ docker rm -f vicious-app
 Simple CURL tests
 ```bash
 $ curl -X GET http://127.0.0.1:5000/
-[{"url": "http://127.0.0.1:5000/0/", "text": "do the shopping"}, {"url": "http://127.0.0.1:5000/1/", "text": "build the codez"}, {"url": "http://127.0.0.1:5000/2/", "text": "paint the door"}]
-$ curl -X GET http://127.0.0.1:5000/1/
-{"url": "http://127.0.0.1:5000/1/", "text": "build the codez"}
-$ curl -X PUT http://127.0.0.1:5000/1/ -d text="flask api is teh awesomez"
-{"url": "http://127.0.0.1:5000/1/", "text": "flask api is teh awesomez"}
+[{"url": "/classify/", "model": "Classification"}]
+
+$ curl -X GET http://127.0.0.1:5000/classify/
+[{"url": "/classify/0/", "classifier_type": "DecisionTreeClassifier"}, {"url": "/classify/1/", "classifier_type": "Classifier 1"}, {"url": "/classify/2/", "classifier_type": "Classifier 2"}]
+
+$ curl -X GET http://127.0.0.1:5000/classify/0/
+{"gender": "male"}
+
 ```
 
 The application will be accessible at http:127.0.0.1:5000 or if you are using boot2docker then first find ip address using `$ boot2docker ip` and the use the ip `http://<host_ip>:5000`

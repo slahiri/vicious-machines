@@ -18,40 +18,41 @@ Y = ['male', 'male', 'female',
 
 clf = clf.fit(X, Y)
 
-ml = {
+model_list = {
     0: ['Classification', '/classify/']
 }
 
 classifiers = {
-    0: ['DecisionTreeClassifier', '/classify/0/'],
-    1: ['Classifier 1', '/classify/1/'],
-    2: ['Classifier 2', '/classify/2/'],
+    0: ['DecisionTreeClassifier', {"key": 0, "height": 170, "weight": 70, "shoe": 43}],
+    1: ['Classifier 1', '{}'],
+    2: ['Classifier 2', '{}'],
 }
 
 
 @app.route("/", methods=['GET'])
-def ml_list():
-    return [{'model': ml[idx][0], 'url': ml[idx][1]}
-            for idx in sorted(ml.keys())]
+def model_list():
+    return [{'model': model_list[idx][0], 'url': model_list[idx][1]}
+            for idx in sorted(model_list.keys())]
 
 
-@app.route("/classify/", methods=['GET'])
-def classification_list():
-    return [{'classifier_type': classifiers[idx][0], 'url': classifiers[idx][1]}
+@app.route("/classify/", methods=['GET', 'POST'])
+def gender_classify():
+    if request.method == 'POST':
+        key = request.data.get('key', '')
+        height = request.data.get('height', '')
+        weight = request.data.get('weight', '')
+        shoe = request.data.get('shoe', '')
+        if key == 0:
+            prediction = clf.predict([[height, weight, shoe]])
+            return {'gender': prediction[0]}
+        elif key == 1:
+            return '{}', status.HTTP_204_NO_CONTENT
+        elif key == 2:
+            return '{}', status.HTTP_204_NO_CONTENT
+        else:
+            return '{}', status.HTTP_204_NO_CONTENT
+    return [{'classifier_type': classifiers[idx][0], 'sample': classifiers[idx][1]}
             for idx in sorted(classifiers.keys())]
-
-
-@app.route("/classify/<int:key>/", methods=['GET'])
-def gender_classify(key):
-    if key == 0:
-        prediction = clf.predict([[170, 70, 43]])
-        return {'gender': prediction[0]}
-    elif key == 1:
-        return '{}', status.HTTP_204_NO_CONTENT
-    elif key == 2:
-        return '{}', status.HTTP_204_NO_CONTENT
-    else:
-        return '{}', status.HTTP_204_NO_CONTENT
 
 
 if __name__ == "__main__":

@@ -4,16 +4,27 @@
 
 [![nodesource/node](http://dockeri.co/image/lahirs2/vicious-machines)](https://registry.hub.docker.com/u/lahirs2/vicious-machines/)
 
+## Implementation
+Currently the code implements simple Classifier implementation to predict gender based on height, weight, show_size data.
+
+Implemented models
+- DecisionTreeClassifier
+- KNeighborsClassifier
+- LogisticRegression
+- GaussianNB
+- RandomForestClassifier
+
+## Installation
 Build the image using the following command
 
 ```bash
-$ docker build -t lahirs2/vicious-machines:latest .
+$ docker build -t lahirs2/vicious-machines:slim .
 ```
 
 Run the Docker container using the command shown below.
 
 ```bash
-$ docker run -d --name vicious-app -p 5000:5000 lahirs2/vicious-machines:latest
+$ docker run -d --name vicious-app -p 5000:5000 lahirs2/vicious-machines:slim
 ```
 
 Execute unit test case
@@ -24,7 +35,7 @@ $ docker exec vicious-app python -m unittest discover
 
 Login to bash
 ```bash
-$ sudo docker exec -i -t <CONTAINER ID> /bin/bash
+$ sudo docker exec -i -t vicious-app /bin/bash
 ```
 
 Kill Application Instance
@@ -32,17 +43,16 @@ Kill Application Instance
 $ docker rm -f vicious-app
 ```
 
-Simple CURL tests
+## CURL Tests
 ```bash
 $ curl -X GET http://127.0.0.1:5000/
-[{"url": "/classify/", "model": "Classification"}]
 
 $ curl -X GET http://127.0.0.1:5000/classify/
-[{"url": "/classify/0/", "classifier_type": "DecisionTreeClassifier"}, {"url": "/classify/1/", "classifier_type": "Classifier 1"}, {"url": "/classify/2/", "classifier_type": "Classifier 2"}]
 
-$ curl -X GET http://127.0.0.1:5000/classify/0/
-{"gender": "male"}
-
+$ curl -X GET http://127.0.0.1:5000/classify/
 ```
 
 The application will be accessible at http:127.0.0.1:5000 or if you are using boot2docker then first find ip address using `$ boot2docker ip` and the use the ip `http://<host_ip>:5000`
+
+## References
+- 

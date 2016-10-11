@@ -5,7 +5,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/slahiri/vicious-machines.svg?style=social&label=Fork)](https://github.com/slahiri/vicious-machines)
 [![GitHub stars](https://img.shields.io/github/stars/slahiri/vicious-machines.svg?style=social&label=Star)](https://github.com/slahiri/vicious-machines)
 [![GitHub watchers](https://img.shields.io/github/watchers/slahiri/vicious-machines.svg?style=social&label=Watch)](https://github.com/slahiri/vicious-machines)
-[![GitHub followers](https://img.shields.io/github/followers/slahiri.svg?style=social&label=Follow)](https://github.com/slahiri/vicious-machines)
+[![GitHub followers](https://img.shields.io/github/followers/siddhartha-lahiri.svg?style=social&label=Follow)](https://github.com/slahiri/vicious-machines)
 [![Twitter Follow](https://img.shields.io/twitter/follow/sid_2vicious.svg?style=social)](https://twitter.com/sid_2vicious)
 
 [![nodesource/node](http://dockeri.co/image/lahirs2/vicious-machines)](https://registry.hub.docker.com/u/lahirs2/vicious-machines/)
